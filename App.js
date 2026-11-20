@@ -1,20 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Provider } from 'react-redux';
+import { store } from './redux/store.js';
+import {createStaticNavigation} from '@react-navigation/native';
+
+import Login from './screens/login.js';
+import Overview from './screens/overview.js';
+import AddGoal from './screens/addGoal.js';
+import RemoveGoal from './screens/removeGoal.js';
+
+const RootStack = createNativeStackNavigator({
+  initialRouteName: 'Login',
+  screens: {
+    Login: Login,
+    Home: Overview,
+    Add: AddGoal,
+    Remove: RemoveGoal
+  },
+});
+
+const Navigation = createStaticNavigation(RootStack);
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <Provider store={store}>
+      <Navigation/>
+    </Provider>
+);
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
