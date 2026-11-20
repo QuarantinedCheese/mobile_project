@@ -10,7 +10,7 @@ import AddGoal from './screens/addGoal.js';
 import RemoveGoal from './screens/removeGoal.js';
 
 const RootStack = createNativeStackNavigator({
-  initialRouteName: 'Login',
+  initialRouteName: 'Home',
   screens: {
     Login: Login,
     Home: Overview,
