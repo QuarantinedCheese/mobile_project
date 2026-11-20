@@ -12,7 +12,9 @@ export const goalSlice = createSlice({
             state.overall += action.payload;
         },
         decreaseGoal: (state, action) => {
-            state.overall -= action.payload;
+            if (state.overall > 1) {
+                state.overall -= action.payload;
+            }
         },
         setGoal: (state, action) => {
             state.overall = action.payload;
