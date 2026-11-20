@@ -7,4 +7,10 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  flexRow: {
+    // flex: 1,
+    flexDirection: 'row',
+    height: 30,
+  }
 });
