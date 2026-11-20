@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { increaseGoal, decreaseGoal } from "../redux/reducers/goalSlice";
 import { useNavigation } from '@react-navigation/native';
 
+import DisplayGoal from "../components/displayGoal";
 
 export default function Overview() {
     const dispatch = useDispatch();
@@ -33,6 +34,7 @@ export default function Overview() {
                 />
                 <Button
                     title="MANAGE GOALS"
+                    onPress={() => navigation.navigate('Remove')}
                 />
             </View>
 
@@ -42,9 +44,7 @@ export default function Overview() {
                 keyExtractor={item => item.id}
                 renderItem={({ item }) => (
                     <View>
-                        <Text>{ item.name }</Text>
-                        <Text>{ item.due != '' ? item.due : "No due date" }</Text>
-                        <Text>{ item.desc != '' ? item.desc : "No descripton" }</Text>
+                        <DisplayGoal goal={item}/>
                     </View>
                 )}
             />}

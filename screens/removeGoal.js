@@ -1,10 +1,43 @@
-import { View, Text } from "react-native";
+import { View, Text, Button, FlatList } from "react-native";
 import { styles } from "../style_sheets/styles";
+import { useDispatch, useSelector } from "react-redux";
+import DisplayGoal from "../components/displayGoal";
+
+import { removeGoal, increaseCompleted } from "../redux/reducers/goalSlice";
+
 
 export default function RemoveGoal() {
+    const goals = useSelector(state => state.goal.goals);
+
+    const dispatch = useDispatch();
+
     return (
-        <View>
-            <Text>Remove Goal</Text>
+        <View style={styles.container}>
+            <Text>Manage Goals</Text>
+
+            {goals.length == 0 ? <Text>No goals to manage.</Text> :
+            <FlatList
+                data={goals}
+                keyExtractor={item => item.id}
+                renderItem={({ item }) => (
+                    <View>
+                        <DisplayGoal goal={item}/>
+                        <View style={styles.flexRow}>
+                            <Button
+                                title="REMOVE"
+                                onPress={() => dispatch(removeGoal(item))}
+                            />
+                            <Button
+                                title="MARK COMPLETE"
+                                onPress={() => {
+                                    dispatch(removeGoal(item));
+                                    dispatch(increaseCompleted(1));
+                                }}
+                            />
+                        </View>
+                    </View>
+                )}
+            />}
         </View>
     )
 }

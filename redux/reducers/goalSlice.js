@@ -5,7 +5,26 @@ export const goalSlice = createSlice({
     initialState: {
         overall: 10,
         completed: 0,
-        goals: []
+        goals: [
+            {
+                id: 0,
+                name: 'Banana',
+                due: '',
+                desc: 'eat a beautiful banana',
+            },
+            {
+                id: 1,
+                name: 'Workout',
+                due: '',
+                desc: 'Workout and get swole',
+            },
+            {
+                id: 2,
+                name: 'Finish Mobile PM1',
+                due: 'Nov 21st',
+                desc: '',
+            },
+        ]
     },
     reducers: {
         increaseGoal: (state, action) => {
@@ -33,12 +52,17 @@ export const goalSlice = createSlice({
         appendGoal: (state, action) => {
             state.goals.push(action.payload);
         },
+        removeGoal: (state, action) => {
+            state.goals.splice(
+                state.goals.findIndex(v => v.id === action.payload.id), 1
+            );
+        }
     }
 });
 
 export const {
     increaseGoal, decreaseGoal, setGoal,
     increaseCompleted, decreaseCompleted, setCompleted,
-    appendGoal
+    appendGoal, removeGoal
 } = goalSlice.actions;
 export default goalSlice.reducer;
