@@ -1,5 +1,6 @@
 import { Provider } from 'react-redux';
 import { store } from './redux/store.js';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createStaticNavigation} from '@react-navigation/native';
 
 import Login from './screens/login.js';
