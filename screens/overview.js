@@ -16,17 +16,18 @@ export default function Overview() {
 
     return (
         <View style={styles.container}>
-            <Text>Overview</Text>
+            <Text style={styles.title}>Overview</Text>
 
-            <Text>Goals Completed:</Text>
+            <Text style={styles.subtitle}>Goals Completed:</Text>
             <View style={styles.flexRow}>
                 <Button title="-" onPress={() => dispatch(decreaseGoal(1))}/>
-                <Text> {completedGoals} / {overallGoals} </Text>
+                <Text style={styles.subtitle}> {completedGoals} / {overallGoals} </Text>
                 <Button title="+" onPress={() => dispatch(increaseGoal(1))}/>
             </View>
 
             <Text>Movie Quote/Joke</Text>
 
+            <View style={styles.goals}>
             <View style={styles.flexRow}>
                 <Button
                     title="ADD GOAL"
@@ -37,17 +38,17 @@ export default function Overview() {
                     onPress={() => navigation.navigate('Remove')}
                 />
             </View>
-
+            
             {goals.length == 0 ? <Text>No goals to display.</Text> :
             <FlatList
                 data={goals}
                 keyExtractor={item => item.id}
                 renderItem={({ item }) => (
-                    <View>
+                    <View style={styles.goal}>
                         <DisplayGoal goal={item}/>
                     </View>
                 )}
-            />}
+            />}</View>
             
         </View>
     )

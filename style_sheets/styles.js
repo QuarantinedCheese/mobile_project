@@ -16,13 +16,13 @@ export const styles = StyleSheet.create({
     },
 
     title: {
-        fontSize: 24,
+        fontSize: 30,
         fontWeight: "bold",
         marginBottom: 15,
     },
 
     subtitle: {
-        fontSize: 20,
+        fontSize: 25,
         marginBottom: 5,
     },
 
@@ -47,6 +47,41 @@ export const styles = StyleSheet.create({
         borderRadius: 5,
         width: 250,
         textAlign: 'center'
+    },
+
+    goal: {
+        borderWidth: 2,
+        borderColor: '#999',
+        borderRadius: 10,
+        margin: 2,
+        marginBottom: 15,
+        padding: 5,
+    },
+
+    goals: {
+        flex: 1,
+        width: '95%',
+        height: '50%',
+        borderWidth: 1,
+        borderColor: "#999",
+        backgroundColor: '#fff',
+        borderRadius: 5,
+        padding: 10,
+        paddingTop: 15,
+        marginTop: 10,
+    },
+
+    date: {
+        fontSize: 16,
+        marginBottom: 5,
+        textAlign: 'right',
+        color: '#999'
+    },
+    
+    desc: {
+        fontSize: 18,
+        marginBottom: 5,
+        color: '#737373'
     },
 
     spacer1: {
