@@ -13,14 +13,15 @@ export default function RemoveGoal() {
 
     return (
         <View style={styles.container}>
-            <Text>Manage Goals</Text>
+            <Text style={styles.title}>Manage Goals</Text>
 
+            <View style={styles.goals}>
             {goals.length == 0 ? <Text>No goals to manage.</Text> :
             <FlatList
                 data={goals}
                 keyExtractor={item => item.id}
                 renderItem={({ item }) => (
-                    <View>
+                    <View style={styles.goal}>
                         <DisplayGoal goal={item}/>
                         <View style={styles.flexRow}>
                             <Button
@@ -37,7 +38,7 @@ export default function RemoveGoal() {
                         </View>
                     </View>
                 )}
-            />}
+            />}</View>
         </View>
     )
 }
